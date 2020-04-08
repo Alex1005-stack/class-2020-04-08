@@ -48,15 +48,41 @@ Let's spend time on missing data using the [**naniar**](https://naniar.njtierney
 
 * Is missingness large enough to be a worry?
 
+```{r s1}
+summary(x)
+
+x %>% 
+  sample_n(10)
+
+x %>% 
+  group_by(dvote) %>% 
+  summarize(mn_income = mean(income))
+
+```
+
 
 # Scene 2
 
 **Prompt:** Let's make some graphics. The **naniar** package comes with geom_* functions which can be used with **gpglot2** just like the built in geoms. It also has a variety of gg_* functions and miss_* functions. Let's start with `gg_miss_var()` and  `miss_var_summary()`. What do these show us?
 
 
+```{r s2}
+miss_var_summary(x)
+
+gg_miss_var(x) + 
+  labs(y = "Look at all the missing values")
+```
+
+
+
 # Scene 3
 
 **Prompt:** `gg_miss_var()` also allows us to show things in terms of percentages. Explore that approach. As you can see, `dvote` is missing for 60% of our observations. Since the whole point of the exercise is to understand and explain the variation in `dvote`, this seems like a problem! 
+
+```{r s3b}
+gg_miss_var(x, show_pct = TRUE) +
+  labs(y = "Viewing in terms of percentages is helpful")
+```
 
 Recall the discussion (p. 298ff) in RAOS about the different sorts of missingness. For each of the four types, write down its name and a scenario via which dvote might be missing which is consistent with that type of missingness. Give both words and some pseudo R-code in your explanation. Example:
 
