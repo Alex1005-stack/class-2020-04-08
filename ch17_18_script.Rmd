@@ -100,6 +100,12 @@ Do the same for the next three types of missing data. Describe each in terms of 
 
 **Prompt:** use `gg_miss_var` to create a plot which is facetted by year. What explanations do you have for this pattern? Does this pattern make you more or less worried about all the missing data? That is, does this give any evidence as to what sort of missingness we are dealing with. And, deeper question, does this make you more or less worried about the inferences we are going to draw from our model?
 
+```{r s4}
+gg_miss_var(x,
+            facet = year)
+```
+
+
 
 # Scene 5
 
